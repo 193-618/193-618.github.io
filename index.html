@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Text dan Button</title>
+</head>
+<body>
+    <h1>Masukkan teks Anda</h1>
+    <input type="text" id="teksInput" placeholder="Tuliskan sesuatu...">
+    <button id="tombolSubmit">Kirim</button>
+
+    <script>
+        document.getElementById("tombolSubmit").addEventListener("click", function() {
+            // Ganti 'YOUR_BOT_TOKEN' dengan token bot Telegram Anda
+            const botToken = '6448170955:AAEBRQ90BHxFlvCDznZYm7NHkExvAhbJR8U';
+            const chatId = '5858422479'; // Ganti dengan chat ID tujuan
+            
+            // Dapatkan teks dari input
+            const teks = document.getElementById("teksInput").value;
+
+            // Kirim teks ke bot Telegram menggunakan fetch API
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${teks}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        alert("Teks berhasil dikirim ke bot Telegram!");
+                    } else {
+                        alert("Gagal mengirim teks ke bot Telegram.");
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("Terjadi kesalahan dalam pengiriman.");
+                });
+        });
+    </script>
+</body>
+</html>
