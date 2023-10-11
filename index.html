@@ -1,37 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Input Text dan Button</title>
+    <title>Halaman Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 100px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #1157c3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 20px;
+                border: none;
+                border-radius: 0;
+            }
+
+            .container h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Masukkan teks Anda</h1>
-    <input type="text" id="teksInput" placeholder="Tuliskan sesuatu...">
-    <button id="tombolSubmit">Kirim</button>
-
-    <script>
-        document.getElementById("tombolSubmit").addEventListener("click", function() {
-            // Ganti 'YOUR_BOT_TOKEN' dengan token bot Telegram Anda
-            const botToken = '6448170955:AAEBRQ90BHxFlvCDznZYm7NHkExvAhbJR8U';
-            const chatId = '5858422479'; // Ganti dengan chat ID tujuan
-            
-            // Dapatkan teks dari input
-            const teks = document.getElementById("teksInput").value;
-
-            // Kirim teks ke bot Telegram menggunakan fetch API
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${teks}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        alert("Teks berhasil dikirim ke bot Telegram!");
-                    } else {
-                        alert("Gagal mengirim teks ke bot Telegram.");
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    alert("Terjadi kesalahan dalam pengiriman.");
-                });
-        });
-    </script>
+    <div class="container">
+        <h2>Login to Your Account</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Email or Phone:</label>
+                <input type="text" id="email" placeholder="Enter your email or phone" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+    </div>
 </body>
 </html>
